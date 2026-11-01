@@ -1,0 +1,26 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>五题试炼 · RFALK</title><link rel="icon" href="../assets/favicon.svg"><link rel="stylesheet" href="vendor/katex.min.css"><link rel="stylesheet" href="style.css"><script defer src="vendor/katex.min.js"></script><script defer src="questions.js"></script><script defer src="engine.js"></script><script defer src="game.js"></script></head>
+<body><video id="background" muted loop playsinline poster="../assets/noelle-poster.jpg" aria-hidden="true"></video><div class="shade"></div>
+<header><a href="../index.html">R<span>✦</span> <small>RFALK / LEARNING ARCADE</small></a><button id="motion">播放背景</button></header>
+<main>
+<section id="welcome" class="panel welcome">
+ <p class="eyebrow">FIVE QUESTIONS. ONE JOURNEY.</p><h1>五题<span>试炼</span></h1><p class="lead">随机相遇的五道题，属于你的一场挑战。</p>
+ <div class="facts"><span><b>5</b> 道不重复题目</span><span><b>500</b> 分满分</span><span><b>0</b> 答错不扣分</span></div>
+ <p class="rules">答对得 60 分基础分，加上最多 40 分速度奖励。奖励随作答用时线性减少；达到本题建议用时后，答对仍得 60 分。没有强制超时，答完五题后统一揭晓。</p>
+ <p id="resume-note"></p><button id="start" class="primary">开始五题挑战 <span>↗</span></button><a class="quiet-link" href="../index.html">返回主页</a>
+</section>
+<section id="playing" class="panel" hidden>
+ <div class="topline"><p class="eyebrow">CALCULUS / FIVE-QUESTION CHALLENGE</p><span id="position"></span></div>
+ <div class="progress" id="dots" aria-label="挑战进度"></div>
+ <div class="question-heading"><span id="topic"></span><span class="timer">已用时 <b id="timer">00:00</b></span></div>
+ <h1 id="title" tabindex="-1"></h1><div id="prompt" class="math"></div>
+ <div class="question-notes"><span id="budget"></span><span>仅判断最终表达式或极限值</span></div>
+ <form id="answer-form"><label for="answer">你的答案 <small>LaTeX / 普通数学表达式</small></label><textarea id="answer" rows="2" maxlength="400" spellcheck="false" aria-describedby="input-help"></textarea><p id="input-help">支持分数、括号和整数幂。无法识别时不会提交，可修改后重试，计时继续。</p><div class="preview"><small>公式预览</small><div id="preview">输入后在这里预览</div></div><p id="error" role="alert"></p><div class="actions"><button type="submit" class="primary" id="submit">确认答案 →</button><button type="button" id="skip">跳过本题</button></div></form>
+ <div id="recorded" hidden><p class="recorded">答案已记录。对错与得分将在五题结束后揭晓。</p><button class="primary" id="next">继续下一题 →</button></div>
+ <p class="save-note" id="save-note" role="status">本轮进度自动保存在此浏览器。</p>
+</section>
+<section id="result" class="panel" hidden>
+ <p class="eyebrow">CHALLENGE COMPLETE</p><div class="result-heading"><div><h1>试炼<span>结算</span></h1><p id="result-description"></p></div><div class="total"><strong id="total">0</strong><span>/ 500 分</span></div></div>
+ <div id="breakdown"></div><div class="actions"><button id="again" class="primary">再挑战一轮 ↗</button><a href="../index.html" class="quiet-link">返回主页</a></div>
+</section>
+<footer><span>RFALK · STAY CURIOUS.</span><span>不设排行榜，自由练习。</span></footer>
+</main><noscript>请启用 JavaScript 以开始挑战。</noscript></body></html>
