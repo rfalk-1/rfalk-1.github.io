@@ -38,7 +38,18 @@ class Parser{
  }
 }
 function grade(text,expected,variable=''){const a=new Parser(text,variable).parse(),b=new Parser(expected,variable).parse();return a.size===b.size&&[...a].every(([k,v])=>b.has(k)&&v[0]===b.get(k)[0]&&v[1]===b.get(k)[1])}
+function toLatex(text,variable=''){
+ const p=new Parser(text,variable).parse();if(!p.size)return '0';
+ let result='';
+ for(const [degree,[n,d]]of [...p].sort((a,b)=>b[0]-a[0])){
+  const sign=n<0n?'-':result?'+':'',num=n<0n?-n:n;
+  const symbol=degree?variable+(degree===1?'':'^{'+degree+'}'):'';
+  const numerator=(num===1n&&degree?'':String(num))+symbol;
+  result+=sign+(d===1n?numerator:'\\frac{'+numerator+'}{'+d+'}');
+ }
+ return result;
+}
 function score(correct,seconds,target){if(!correct)return 0;return 60+Math.round(40*Math.max(0,1-Math.max(0,seconds)/target))}
 function draw(bank,rng=Math.random){if(bank.length<5||new Set(bank.map(q=>q.id)).size!==bank.length)throw new Error('题库需要至少五道且 ID 不重复。');const pool=[...bank];for(let i=pool.length-1;i>0;i--){const j=Math.floor(rng()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]]}return pool.slice(0,5)}
-const api={grade,score,draw,InputError};if(typeof module!=='undefined')module.exports=api;else root.QuestEngine=api;
+const api={grade,toLatex,score,draw,InputError};if(typeof module!=='undefined')module.exports=api;else root.QuestEngine=api;
 })(typeof window!=='undefined'?window:globalThis);
