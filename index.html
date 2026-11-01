@@ -3,56 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RFALK</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-      background: #f4f6fb;
-      color: #253047;
-      line-height: 1.8;
-    }
-    main {
-      max-width: 720px;
-      margin: 60px auto;
-      padding: 32px;
-    }
-    section {
-      background: white;
-      padding: 24px;
-      margin: 20px 0;
-      border-radius: 16px;
-    }
-    h1 { font-size: 36px; }
-    h2 { margin-top: 0; }
-    a { color: #2563eb; }
-  </style>
+  <meta name="theme-color" content="#22232c">
+  <meta name="description" content="RFALK 的个人空间。记录想法，探索未知。">
+  <title>RFALK · Personal Space</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <main>
-    <h1>Hello</h1>
-    <p>Welcome</p>
-
-    <section>
-      <h2>About Me</h2>
-      <p>TBD</p>
-    </section>
-
-    <section>
-      <h2>Something</h2>
-      <ul>
-        <li>TBD</li>
-        <li>TBD</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Contact Me</h2>
-      <p>
-        Email：
-        <a href="mailto:hello@example.com">hello@example.com</a>
-      </p>
-    </section>
-  </main>
+  <a class="skip-link" href="#main">跳转到内容</a>
+  <div class="wallpaper" aria-hidden="true">
+    <video id="wallpaper-video" muted loop playsinline preload="none" poster="assets/noelle-poster.jpg" tabindex="-1" data-src="assets/noelle.mp4"></video>
+  </div>
+  <div class="shade" aria-hidden="true"></div>
+  <div class="site-ui" id="site-ui">
+    <header class="site-header">
+      <a class="brand" href="#home" aria-label="RFALK 首页"><span class="brand-mark">R<span>✦</span></span><span>RFALK<span class="brand-sub">PERSONAL SPACE</span></span></a>
+      <nav aria-label="主导航">
+        <a class="nav-home" href="#home">首页</a>
+        <a href="#about">关于</a>
+        <a href="https://github.com/rfalk-1" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="hero" id="home" aria-labelledby="hero-title">
+        <div class="hero-content">
+          <p class="eyebrow"><span></span> A LITTLE CORNER OF THE INTERNET</p>
+          <h1 id="hero-title">Hello,<br>I'm <em>RFALK.</em></h1>
+          <p class="hero-description">留一片空间，给好奇心。<br><span>欢迎来到我的世界。</span></p>
+          <div class="hero-actions">
+            <a class="button-primary" href="https://github.com/rfalk-1" target="_blank" rel="noopener noreferrer">探索我的 GitHub <span aria-hidden="true">↗</span></a>
+            <a class="button-text" href="#about">认识我 <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="hero-note"><span class="little-star" aria-hidden="true">✧</span> STAY CURIOUS. KEEP EXPLORING.</div>
+        </div>
+      </section>
+      <div class="cards">
+        <section class="glass-card" id="about" aria-labelledby="about-title">
+          <div class="card-top"><span class="card-index">01 / ABOUT</span><span class="card-icon" aria-hidden="true">✳</span></div>
+          <h2 id="about-title">关于我<span>About me</span></h2>
+          <p>这里是 RFALK 的个人空间。<br>关于我的故事，慢慢补全。</p>
+          <span class="quiet-label"><i></i> 持续生长中</span>
+        </section>
+        <a class="glass-card card-link" href="https://github.com/rfalk-1?tab=repositories" target="_blank" rel="noopener noreferrer" aria-label="我的项目，在 GitHub 查看仓库（新窗口）">
+          <div class="card-top"><span class="card-index">02 / PROJECTS</span><span class="card-icon code-icon" aria-hidden="true">&lt;/&gt;</span></div>
+          <h2>我的项目<span>Things I make</span></h2>
+          <p>把想法写成代码，<br>把探索留在这里。</p>
+          <span class="card-cta">查看 GitHub 仓库 <span aria-hidden="true">↗</span></span>
+        </a>
+        <section class="glass-card" id="contact" aria-labelledby="contact-title">
+          <div class="card-top"><span class="card-index">03 / CONNECT</span><span class="card-icon" aria-hidden="true">↗</span></div>
+          <h2 id="contact-title">保持联系<span>Find me online</span></h2>
+          <p>从一个想法开始，<br>在 GitHub 发现更多。</p>
+          <a class="card-cta" href="https://github.com/rfalk-1" target="_blank" rel="noopener noreferrer">@rfalk-1 <span aria-hidden="true">↗</span></a>
+        </section>
+      </div>
+    </main>
+    <footer class="site-footer"><span>© <span id="year">2026</span> RFALK</span><span class="footer-message">Somewhere between ideas &amp; possibilities.</span><span class="footer-platform">BUILT WITH CURIOSITY <span aria-hidden="true">✦</span></span></footer>
+  </div>
+  <div class="scene-controls" role="group" aria-label="背景控制" hidden>
+    <button id="motion-toggle" type="button" aria-label="播放动态背景" aria-pressed="false"><span class="control-icon" id="motion-icon" aria-hidden="true">▷</span><span id="motion-label">播放背景</span></button>
+    <span class="control-divider" aria-hidden="true"></span>
+    <button id="scene-toggle" type="button" aria-label="隐藏页面内容，欣赏壁纸" aria-pressed="false"><span class="control-icon" aria-hidden="true">⛶</span><span id="scene-label">欣赏壁纸</span></button>
+  </div>
+  <p class="sr-only" id="playback-status" role="status"></p>
 </body>
 </html>
