@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+ <meta name="theme-color" content="#22232c"><title>背诵检测 · RFALK</title>
+ <link rel="icon" href="../assets/favicon.svg">
+ <link rel="stylesheet" href="../challenge/vendor/katex.min.css">
+ <link rel="stylesheet" href="recall.css?v=20261105">
+ <script defer src="../challenge/vendor/katex.min.js"></script>
+ <script defer src="bank.js?v=20261105"></script><script defer src="math.js?v=20261105"></script>
+ <script defer src="recall.js?v=20261105"></script>
+</head>
+<body>
+ <video id="wallpaper" muted loop playsinline poster="../assets/noelle-poster.jpg" aria-hidden="true"></video><div class="shade"></div>
+ <header><a class="brand" href="../index.html">R<span>✦</span> <small>RFALK / RECALL STUDIO</small></a><button id="motion" type="button">播放背景</button></header>
+ <main>
+  <section id="menu" class="panel">
+   <p class="eyebrow">RECALL / UNDERSTAND / REMEMBER</p>
+   <h1>背诵<span>检测</span></h1><p class="lead">先选一份内容，再把公式完整写出来。</p>
+   <p class="muted">四份课件 · 45 条公式 · 各专题独立计分</p>
+   <div class="rule-box"><strong>完整默写，独立结算</strong><p>每次打乱所选专题的全部题目。每题答对 10 分，答错或跳过 0 分，不计时加分。所有题目提交后统一查看答案与得分。成绩仅保存在本浏览器，与“五题试炼”分开。</p></div>
+   <div id="resume" hidden><p id="resume-text"></p><button class="secondary" id="resume-button"></button></div>
+   <div class="topic-grid" id="topics"></div>
+   <a class="back-link" href="../index.html">← 返回个人主页</a>
+  </section>
+  <section id="quiz" class="panel" hidden>
+   <div class="section-top"><p class="eyebrow" id="topic-label"></p><button id="to-menu" type="button">返回内容选择</button></div>
+   <div class="progress-meta"><span id="position"></span><span>每题 10 分 · 无时间限制</span></div>
+   <progress id="progress" max="1" value="0" aria-label="本轮进度"></progress>
+   <h1 id="question-title" tabindex="-1"></h1><p id="question-prompt"></p>
+   <div id="question-formula" class="formula question-formula"></div><p id="question-context" class="muted"></p>
+   <form id="answer-form">
+    <label for="answer">完整表达式</label>
+    <textarea id="answer" rows="3" maxlength="300" spellcheck="false" autocapitalize="off" autocomplete="off" aria-describedby="input-help"></textarea>
+    <p class="help" id="input-help">支持普通写法或 LaTeX，如 sin(x)、sqrt(1-x^2)、1/(1+x^2)、\frac{1}{x}。函数参数建议加括号，分母含多项时必须加括号。只填写等号右侧。</p>
+    <div class="preview-box"><span class="eyebrow">输入预览</span><div id="preview" class="formula" aria-live="polite"></div></div>
+    <p id="error" class="error" role="alert"></p>
+    <div class="actions"><button class="primary" id="submit" type="submit">提交完整答案 →</button><button id="skip" type="button">跳过本题</button></div>
+   </form>
+   <div id="recorded" hidden><p class="recorded">答案已记录。完成本专题后统一揭晓。</p><button id="next" class="primary" type="button">继续下一题 →</button></div>
+   <p class="help" id="save-note" role="status"></p>
+  </section>
+  <section id="results" class="panel" hidden>
+   <p class="eyebrow">RECALL COMPLETE</p>
+   <div class="result-heading"><div><h1>背诵<span>结算</span></h1><p id="result-topic"></p></div><div class="score"><strong id="score"></strong><span id="maximum"></span></div></div>
+   <p id="result-summary" class="muted"></p><p class="help">本次得分只属于背诵检测，不计入五题试炼。</p>
+   <div class="actions"><button id="retry" class="primary">再测这个专题 ↗</button><button id="choose">选择其他内容</button></div>
+   <div id="review"></div><a class="back-link" href="../index.html">← 返回个人主页</a>
+  </section>
+  <p id="global-note" class="help" role="status"></p>
+ </main>
+ <footer>RFALK · 从记住，到理解。</footer>
+ <noscript>请启用 JavaScript 以进行背诵检测。</noscript>
+</body>
+</html>
