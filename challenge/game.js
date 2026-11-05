@@ -70,12 +70,13 @@ function renderResults(){
   const verdict=document.createElement('span');verdict.className=r.correct?'correct':'incorrect';verdict.textContent=r.skipped?'已跳过':r.correct?'正确':'错误';
   meta.append(verdict,document.createTextNode(' · '+duration(r.seconds)+' · '+(r.correct?'基础 60 + 速度 '+(r.points-60):'本题 0 分')));
   left.append(heading,meta);points.className='row-score';points.textContent=r.points;top.append(left,points);
+  const prompt=document.createElement('div');prompt.className='math result-prompt';math(prompt,q.prompt);
   const details=document.createElement('details'),summary=document.createElement('summary');summary.textContent='查看答案与解析';
   const mine=document.createElement('div');mine.className='your-answer';
   if(r.skipped)mine.textContent='你的答案：（跳过）';else math(mine,'你的答案：$'+E.toLatex(r.answer,q.variable)+'$');
   const expected=document.createElement('div');expected.className='math';math(expected,'参考答案：$'+(q.answerLatex||E.toLatex(q.expected,q.variable))+'$\n\n'+q.explanation);
   const source=document.createElement('p');source.textContent='来源：'+q.source;
-  details.append(summary,mine,expected,source);row.append(top,details);$('breakdown').append(row);
+  details.append(summary,mine,expected,source);row.append(top,prompt,details);$('breakdown').append(row);
  });
  window.scrollTo({top:0,behavior:'instant'});
 }
